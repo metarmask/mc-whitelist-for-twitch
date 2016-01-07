@@ -1,0 +1,39 @@
+body {
+	min-height: 100vh;
+	margin: 0;
+	background-image: radial-gradient(white,#B3B3B3);
+}
+
+body > section:not([hidden]) {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	height: 100vh;
+}
+
+#connectWithTwitchButton {
+	width: 170px;
+	height: 32px;
+	cursor: pointer;
+	background-image: url("connect-with-twitch-white.png");
+	/* transition-property: -webkit-filter, filter;
+	transition-delay: 1s, 1s; */
+	outline: none;
+}
+
+#connectWithTwitchButton:hover {
+	background-image: url("connect-with-twitch-purple.png");
+}
+
+#connectWithTwitchButton:active {
+	-webkit-filter: brightness(0.5);
+	filter: brightness(0.5);
+	/* transition-delay: 0s, 0s; */
+}
+
+#mcNameInput {
+	padding: 8px;
+	border-radius: 6px;
+	border: 1px solid darkgray;
+}
