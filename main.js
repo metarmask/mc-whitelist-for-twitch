@@ -34,9 +34,9 @@ jqueryScript.addEventListener("load",function(){
 					if(error){
 						// TODO
 					}else{
-						loadingLog("Fick användarnamn: " + response.user_name);
+						loadingLog("Fick användarnamn: " + response.token.user_name);
 						loadingLog("Kollar prenumeration...");
-						Twitch.api({method:"/users/" + response.user_name + "/subscriptions/stamsite"},function(error, response){
+						Twitch.api({method:"/users/" + response.token.user_name + "/subscriptions/stamsite"},function(error, response){
 							if(error){
 								loadingLog("Du är inte prenumerant");
 							}else{
