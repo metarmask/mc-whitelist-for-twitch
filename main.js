@@ -29,7 +29,23 @@ jqueryScript.addEventListener("load",function(){
 		loadingLog("Väntar på Twitch API:et...");
 		Twitch.init({clientId: "q198sirkskt5xem95ag20bisvkgmpdw"}, function(error, status) {
 			if(status.authenticated){
-				
+				loadingLog("Hämtar användarnamn...");
+				Twitch.api({method:"/"},function(error, response){
+					if(error){
+						// TODO
+					}else{
+						loadingLog("Fick användarnamn: " + response.user_name);
+						loadingLog("Kollar prenumeration...");
+						Twitch.api({method:"/users/" + response.user_name + "/subscriptions/stamsite"},function(error, response){
+							if(error){
+								loadingLog("Du är inte prenumerant");
+							}else{
+								loadingLog("Du är prenumerant!");
+								switchSection("username");
+							}
+						});
+					}
+				});
 			}else{
 				switchSection("connect");
 			}
