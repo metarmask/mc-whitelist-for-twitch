@@ -51,9 +51,9 @@ jqueryScript.addEventListener("load",function(){
 			}
 		});
 	});
-	document.body.appendChild(twitchScript);
+	document.head.appendChild(twitchScript);
 });
-document.body.appendChild(jqueryScript);
+document.head.appendChild(jqueryScript);
 
 connectWithTwitchButton.addEventListener("click",function(){
 	Twitch.login({scope:["user_subscriptions"]});
