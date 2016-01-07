@@ -17,11 +17,13 @@ loadingLog("Huvudskriptet laddat.");
 loadingLog("Laddar jQuery...");
 var jqueryScript = document.createElement("script");
 jqueryScript.src = "https://code.jquery.com/jquery.min.js";
+jqueryScript.async = true;
 jqueryScript.addEventListener("load",function(){
 	loadingLog("jQuery laddat");
 	loadingLog("Laddar Twitch API:et");
 	var twitchScript = document.createElement("script");
 	twitchScript.src = "https://ttv-api.s3.amazonaws.com/twitch.min.js";
+	jqueryScript.async = true;
 	twitchScript.addEventListener("load",function(){
 		loadingLog("Twitch API:et laddat.");
 		loadingLog("Väntar på Twitch API:et...");
