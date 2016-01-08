@@ -14,7 +14,7 @@ function loadingLog(toLog) {
 	loadingLogDiv.appendChild(logDiv);
 }
 loadingLog("Huvudskriptet laddat.");
-loadingLog("Laddar jQuery...");
+loadingLog("Laddar jQuery (behövs för Twitch API:et)...");
 var jqueryScript = document.createElement("script");
 jqueryScript.src = "https://code.jquery.com/jquery.min.js";
 jqueryScript.async = true;
@@ -69,7 +69,7 @@ usernameForm.addEventListener("submit",function(event){
 	var request = new XMLHttpRequest();
 	request.open("POST", "https://script.google.com/macros/s/AKfycbwH-G5Lc3AnqsYOyLY6Vq19WYsRGZ3kHM4uK-uNVNKX-kBPeUk/exec");
 	request.addEventListener("load",function () {
-		if(this.responseText == "success"){
+		if(this.responseText.startsWith("success")){
 			loadingLog("Du är nu tillagd i listan");
 		}else{
 			loadingLog("Fel: " + this.responseText);
