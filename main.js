@@ -58,3 +58,18 @@ document.head.appendChild(jqueryScript);
 connectWithTwitchButton.addEventListener("click",function(){
 	Twitch.login({scope:["user_subscriptions"]});
 });
+
+var usernameForm = document.querySelector("body > section[name=username] form");
+usernameForm.addEventListener("submit",function(event){
+	event.preventDefault();
+	switchSection("loading");
+	usernameForm.querySelector("[name=token]").value = Twitch.getToken();
+	loadingLog("Skickar...");
+	var formData = new FormData(usernameForm);
+	var request = new XMLHttpRequest();
+	request.open("POST", "https://script.google.com/macros/s/AKfycbwH-G5Lc3AnqsYOyLY6Vq19WYsRGZ3kHM4uK-uNVNKX-kBPeUk/exec");
+	request.addEventListener("load",function () {
+		console.log(JSON.parse(this.responseText));
+	});
+	request.send(formData);
+});
