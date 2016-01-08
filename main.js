@@ -69,7 +69,11 @@ usernameForm.addEventListener("submit",function(event){
 	var request = new XMLHttpRequest();
 	request.open("POST", "https://script.google.com/macros/s/AKfycbwH-G5Lc3AnqsYOyLY6Vq19WYsRGZ3kHM4uK-uNVNKX-kBPeUk/exec");
 	request.addEventListener("load",function () {
-		console.log(JSON.parse(this.responseText));
+		if(this.responseText == "success"){
+			loadingLog("Du är nu tillagd i listan");
+		}else{
+			loadingLog("Fel: " + this.responseText);
+		}
 	});
 	request.send(formData);
 });
